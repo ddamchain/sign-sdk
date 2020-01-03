@@ -5,7 +5,6 @@ import (
 	"crypto/elliptic"
 	"encoding/hex"
 	"encoding/json"
-	"fmt"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"golang.org/x/crypto/sha3"
 	"math/big"
@@ -72,8 +71,6 @@ func (child Child) Sign(targetAddr string, value int64, gasLimit int64, gasPrice
 	//trans:=txRawToTransaction(targetAddr,uint64(value),uint64(gasLimit),uint64(gasPrice),_type,uint64(nonce),dataHex)
 	trans := txRawToTransaction(targetAddr, value, gasLimit, gasPrice, _type, nonce, dataHex)
 	hash := trans.GenHash()
-
-	fmt.Println("output hash:", hash.Hex())
 
 	sign := child.sign(hash.Bytes())
 
